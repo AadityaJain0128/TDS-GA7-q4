@@ -35,7 +35,10 @@ print("\nSuccessfully saved correlation matrix to 'correlation.csv'.")
 
 # --- Step 4: Generate and Save the Heatmap ---
 # Create a heatmap to visualize the correlation matrix.
-plt.figure(figsize=(8, 6)) # Set the figure size for better readability
+# The image size in pixels is determined by figsize * dpi.
+# To meet the < 512x512 pixel requirement, we'll create a 5x5 inch figure at 100 DPI,
+# resulting in a 500x500 pixel image.
+plt.figure(figsize=(5, 5)) # Set the figure size in inches
 
 # Use seaborn's heatmap function.
 # - 'correlation_matrix': The data to plot.
@@ -52,8 +55,9 @@ plt.title('Supply Chain Metrics Correlation Matrix')
 plt.tight_layout()
 
 # Save the generated heatmap as a PNG image file.
-plt.savefig('heatmap.png', dpi=300) # Use a high DPI for better quality
-print("Successfully generated and saved heatmap to 'heatmap.png'.")
+# We set the DPI (dots per inch) to 100.
+plt.savefig('heatmap.png', dpi=100)
+print("Successfully generated and saved heatmap to 'heatmap.png' (500x500 pixels).")
 
 # --- (Optional) Step 5: Display the Plot ---
 # If you are running this script in an environment that supports GUI,
